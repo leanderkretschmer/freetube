@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StreamTune</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top-bar">
+        <div class="logo">Stream<span>Tune</span></div>
+        <div class="search-area">
+          <div class="search">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Suche auf YouTube nach Videos oder Kanälen"
+              autocomplete="off"
+            />
+            <button id="searchButton">Suchen</button>
+          </div>
+          <div class="suggestions" id="suggestions"></div>
+        </div>
+        <div class="actions">
+          <button class="ghost">Live</button>
+          <button class="ghost">Konto</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <aside class="sidebar">
+          <nav>
+            <a class="active" href="#">Start</a>
+            <a href="#">Trends</a>
+            <a href="#">Musik</a>
+            <a href="#">Gaming</a>
+            <a href="#">News</a>
+          </nav>
+          <section>
+            <h4>Smart Filter</h4>
+            <label><input type="checkbox" checked /> 4K / 8K</label>
+            <label><input type="checkbox" checked /> Untertitel</label>
+            <label><input type="checkbox" checked /> Live</label>
+            <label><input type="checkbox" checked /> Neu</label>
+          </section>
+        </aside>
+
+        <section class="content">
+          <section class="hero">
+            <div>
+              <h1>YouTube in höchster Qualität streamen.</h1>
+              <p>
+                Suche direkt auf YouTube, wähle die Abspielqualität und erlebe eine
+                adaptive Wiedergabe mit höchster verfügbarer Qualität.
+              </p>
+            </div>
+            <div class="hero-card">
+              <h3>Bereit zum Streamen</h3>
+              <p>
+                Die Oberfläche nutzt YouTube-Daten live über yt-dlp und bietet dir
+                Autocomplete, Suche und Qualitätswechsel in Echtzeit.
+              </p>
+            </div>
+          </section>
+
+          <section class="player-panel hidden" id="playerPanel">
+            <div class="player-header">
+              <div>
+                <h2 id="videoTitle"></h2>
+                <p id="videoChannel"></p>
+              </div>
+              <div class="quality-info">
+                <span id="currentQuality">Qualität: –</span>
+                <span id="streamStatus">Stream bereit</span>
+              </div>
+            </div>
+            <div class="player-window">
+              <div class="video-surface">
+                <video id="videoPlayer" controls playsinline></video>
+              </div>
+              <div class="player-controls">
+                <div class="control-row">
+                  <div class="quality-select">
+                    <label for="qualitySelect">Qualität auswählen</label>
+                    <select id="qualitySelect"></select>
+                  </div>
+                  <div class="segment-info">
+                    <span>Adaptive Qualität</span>
+                    <p id="segmentHint">
+                      Beim Vorspulen wird automatisch die nächstbeste Qualität gewählt,
+                      falls die höchste noch nicht geladen ist.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="feed">
+            <div class="feed-header">
+              <h3 id="feedTitle">Aktuelle Vorschläge von YouTube</h3>
+              <p id="feedSubtitle">
+                Gib einen Suchbegriff ein, um aktuelle Videos und Kanäle zu entdecken.
+              </p>
+            </div>
+            <div class="feed-grid" id="feedGrid"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
