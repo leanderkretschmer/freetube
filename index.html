@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StreamTune</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top-bar">
+        <div class="logo">Stream<span>Tune</span></div>
+        <div class="search">
+          <input type="text" id="searchInput" placeholder="Suche nach Videos, Kanälen oder Themen" />
+          <button id="searchButton">Suchen</button>
+        </div>
+        <div class="actions">
+          <button class="ghost">Upload</button>
+          <button class="ghost">Anmelden</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <aside class="sidebar">
+          <nav>
+            <a class="active" href="#">Start</a>
+            <a href="#">Entdecken</a>
+            <a href="#">Abos</a>
+            <a href="#">Bibliothek</a>
+            <a href="#">Verlauf</a>
+          </nav>
+          <section>
+            <h4>Filter</h4>
+            <label><input type="checkbox" checked /> Live</label>
+            <label><input type="checkbox" checked /> 4K</label>
+            <label><input type="checkbox" checked /> Untertitel</label>
+            <label><input type="checkbox" checked /> Neu</label>
+          </section>
+        </aside>
+
+        <section class="content">
+          <div class="player-panel">
+            <div class="player-header">
+              <h2 id="videoTitle">Galaktische Reisen in 8K</h2>
+              <div class="quality-info">
+                <span id="currentQuality">Qualität: 2160p</span>
+                <span id="streamStatus">Stream: höchste Qualität verfügbar</span>
+              </div>
+            </div>
+            <div class="player-window">
+              <div class="video-surface">
+                <div class="video-placeholder">
+                  <div class="play-icon">▶</div>
+                </div>
+              </div>
+              <div class="player-controls">
+                <div class="timeline">
+                  <input type="range" id="scrubber" min="0" max="100" value="0" />
+                  <div class="buffer-bar">
+                    <span id="bufferFill"></span>
+                  </div>
+                </div>
+                <div class="control-row">
+                  <button id="playButton">Play</button>
+                  <div class="quality-select">
+                    <label for="qualitySelect">Qualität</label>
+                    <select id="qualitySelect">
+                      <option value="4320">4320p (8K)</option>
+                      <option value="2160" selected>2160p (4K)</option>
+                      <option value="1440">1440p</option>
+                      <option value="1080">1080p</option>
+                      <option value="720">720p</option>
+                      <option value="480">480p</option>
+                    </select>
+                  </div>
+                  <div class="segment-info">
+                    <span>Segment-Download</span>
+                    <div class="segment-list" id="segmentList"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <section class="feed">
+            <div class="feed-header">
+              <h3>Dein Home-Feed</h3>
+              <p>Empfehlungen basierend auf deiner Wiedergabe.</p>
+            </div>
+            <div class="feed-grid" id="feedGrid"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
