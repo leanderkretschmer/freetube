@@ -10,21 +10,13 @@
     <div class="app">
       <header class="top-bar">
         <div class="logo">Stream<span>Tune</span></div>
-        <div class="search-area">
-          <div class="search">
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Suche auf YouTube nach Videos oder Kanälen"
-              autocomplete="off"
-            />
-            <button id="searchButton">Suchen</button>
-          </div>
-          <div class="suggestions" id="suggestions"></div>
+        <div class="search">
+          <input type="text" id="searchInput" placeholder="Suche nach Videos, Kanälen oder Themen" />
+          <button id="searchButton">Suchen</button>
         </div>
         <div class="actions">
-          <button class="ghost">Live</button>
-          <button class="ghost">Konto</button>
+          <button class="ghost">Upload</button>
+          <button class="ghost">Anmelden</button>
         </div>
       </header>
 
@@ -32,77 +24,68 @@
         <aside class="sidebar">
           <nav>
             <a class="active" href="#">Start</a>
-            <a href="#">Trends</a>
-            <a href="#">Musik</a>
-            <a href="#">Gaming</a>
-            <a href="#">News</a>
+            <a href="#">Entdecken</a>
+            <a href="#">Abos</a>
+            <a href="#">Bibliothek</a>
+            <a href="#">Verlauf</a>
           </nav>
           <section>
-            <h4>Smart Filter</h4>
-            <label><input type="checkbox" checked /> 4K / 8K</label>
-            <label><input type="checkbox" checked /> Untertitel</label>
+            <h4>Filter</h4>
             <label><input type="checkbox" checked /> Live</label>
+            <label><input type="checkbox" checked /> 4K</label>
+            <label><input type="checkbox" checked /> Untertitel</label>
             <label><input type="checkbox" checked /> Neu</label>
           </section>
         </aside>
 
         <section class="content">
-          <section class="hero">
-            <div>
-              <h1>YouTube in höchster Qualität streamen.</h1>
-              <p>
-                Suche direkt auf YouTube, wähle die Abspielqualität und erlebe eine
-                adaptive Wiedergabe mit höchster verfügbarer Qualität.
-              </p>
-            </div>
-            <div class="hero-card">
-              <h3>Bereit zum Streamen</h3>
-              <p>
-                Die Oberfläche nutzt YouTube-Daten live über yt-dlp und bietet dir
-                Autocomplete, Suche und Qualitätswechsel in Echtzeit.
-              </p>
-            </div>
-          </section>
-
-          <section class="player-panel hidden" id="playerPanel">
+          <div class="player-panel">
             <div class="player-header">
-              <div>
-                <h2 id="videoTitle"></h2>
-                <p id="videoChannel"></p>
-              </div>
+              <h2 id="videoTitle">Galaktische Reisen in 8K</h2>
               <div class="quality-info">
-                <span id="currentQuality">Qualität: –</span>
-                <span id="streamStatus">Stream bereit</span>
+                <span id="currentQuality">Qualität: 2160p</span>
+                <span id="streamStatus">Stream: höchste Qualität verfügbar</span>
               </div>
             </div>
             <div class="player-window">
               <div class="video-surface">
-                <video id="videoPlayer" controls playsinline></video>
+                <div class="video-placeholder">
+                  <div class="play-icon">▶</div>
+                </div>
               </div>
               <div class="player-controls">
+                <div class="timeline">
+                  <input type="range" id="scrubber" min="0" max="100" value="0" />
+                  <div class="buffer-bar">
+                    <span id="bufferFill"></span>
+                  </div>
+                </div>
                 <div class="control-row">
+                  <button id="playButton">Play</button>
                   <div class="quality-select">
-                    <label for="qualitySelect">Qualität auswählen</label>
-                    <select id="qualitySelect"></select>
+                    <label for="qualitySelect">Qualität</label>
+                    <select id="qualitySelect">
+                      <option value="4320">4320p (8K)</option>
+                      <option value="2160" selected>2160p (4K)</option>
+                      <option value="1440">1440p</option>
+                      <option value="1080">1080p</option>
+                      <option value="720">720p</option>
+                      <option value="480">480p</option>
+                    </select>
                   </div>
                   <div class="segment-info">
-                    <span>Adaptive Qualität</span>
-                    <p id="segmentHint">
-                      Beim Vorspulen wird automatisch die nächstbeste Qualität gewählt,
-                      falls die höchste noch nicht geladen ist.
-                    </p>
+                    <span>Segment-Download</span>
+                    <div class="segment-list" id="segmentList"></div>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
+          </div>
 
           <section class="feed">
             <div class="feed-header">
-              <h3 id="feedTitle">Aktuelle Vorschläge von YouTube</h3>
-              <p id="feedSubtitle">
-                Gib einen Suchbegriff ein, um aktuelle Videos und Kanäle zu entdecken.
-              </p>
+              <h3>Dein Home-Feed</h3>
+              <p>Empfehlungen basierend auf deiner Wiedergabe.</p>
             </div>
             <div class="feed-grid" id="feedGrid"></div>
           </section>
